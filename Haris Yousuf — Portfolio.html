@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Haris Yousuf — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f0efe9;
+    --paper: #f7f6f2;
+    --ink: #23262b;
+    --ink-soft: #565c64;
+    --ink-faint: #9199a1;
+    --line: #d8d5cb;
+    --accent: #4a5f73;
+    --accent-soft: #7f96a8;
+    --rust: #a86a45;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    background-image: linear-gradient(rgba(35,38,43,0.028) 1px, transparent 1px);
+    background-size: 100% 34px;
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.65;
+  }
+  ::selection { background: var(--accent-soft); color: var(--paper); }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--line); transition: border-color 0.15s ease; }
+  a:hover { border-bottom-color: var(--accent); }
+
+  .serif { font-family: 'Newsreader', serif; }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+
+  .wrap { max-width: 700px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---- Intro ---- */
+  header.intro { padding: 96px 0 64px; }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    margin: 0 0 28px;
+  }
+  .eyebrow span { color: var(--rust); }
+  h1.name {
+    font-family: 'Newsreader', serif;
+    font-weight: 500;
+    font-size: clamp(38px, 7vw, 54px);
+    line-height: 1.08;
+    margin: 0 0 6px;
+  }
+  p.role {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+  }
+  .links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    margin-bottom: 36px;
+  }
+  .intro-body p { font-size: 16px; color: var(--ink-soft); max-width: 58ch; margin: 0 0 16px; }
+  .intro-body strong { color: var(--ink); font-weight: 500; }
+
+  /* ---- Sections ---- */
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 28px;
+  }
+  .section-title { font-family: 'Newsreader', serif; font-style: italic; font-size: 22px; margin: 0; }
+  .section-tag { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink-faint); letter-spacing: 0.05em; }
+
+  /* ---- Interests ---- */
+  .interest-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+  .interest-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    padding: 6px 12px;
+  }
+
+  /* ---- Projects ---- */
+  .projects { display: flex; flex-direction: column; }
+  .project { padding: 32px 0; border-bottom: 1px solid var(--line); }
+  .project:first-child { padding-top: 0; }
+  .project:last-child { border-bottom: none; padding-bottom: 0; }
+  .project .sheet {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .project-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 10px; }
+  .project h3 { font-family: 'Newsreader', serif; font-weight: 500; font-size: 21px; margin: 0; }
+  .project .status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--rust);
+    white-space: nowrap;
+  }
+  .project ul { margin: 0 0 14px; padding-left: 18px; color: var(--ink-soft); font-size: 15px; }
+  .project li { margin-bottom: 7px; }
+  .project .repo-link { font-family: 'IBM Plex Mono', monospace; font-size: 13px; }
+
+  footer {
+    padding: 40px 0 72px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1a1c1f; --paper: #202226; --ink: #eceae4; --ink-soft: #b3b0a8;
+      --ink-faint: #77746c; --line: #33353a; --accent: #93a9bc; --accent-soft: #4a5f73; --rust: #c68a63;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1a1c1f; --paper: #202226; --ink: #eceae4; --ink-soft: #b3b0a8;
+    --ink-faint: #77746c; --line: #33353a; --accent: #93a9bc; --accent-soft: #4a5f73; --rust: #c68a63;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .fade-in { animation: fadeIn 0.7s ease both; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  }
+
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="intro fade-in">
+    <p class="eyebrow">PORTFOLIO — <span>REV. 2026</span></p>
+    <h1 class="name">Haris Yousuf</h1>
+    <p class="role">Student — B.Tech. Civil Engineering, NIT Srinagar</p>
+    <div class="links-row">
+      <a href="mailto:harisy334@gmail.com">harisy334@gmail.com</a>
+      <a href="https://github.com/harisyousuf334" target="_blank" rel="noopener">GitHub</a>
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="intro-body">
+      <p>My interests aren't limited to one corner of engineering — I build across microcontrollers, hardware/software integration, AI and machine learning, and plenty of purely manual, physical work, including semiconductors and non-"smart" builds.</p>
+      <p>Right now I'm nearly finished with <strong>C through CS50x</strong>, and next in line is <strong>Python</strong>, then <strong>SQL</strong>, then <strong>HTML</strong>, then <strong>C++</strong> — aimed specifically at programming microcontrollers. Alongside that, I'm building proficiency in <strong>SolidWorks</strong>, <strong>AutoCAD</strong>, and <strong>Onshape</strong>, and doing physical design work like mounts and structural components for different projects — including an avionics unit for a reusable flight vehicle meant to land itself autonomously.</p>
+    </div>
+  </header>
+
+  <section id="interests">
+    <div class="section-head">
+      <p class="section-title">Interests</p>
+      <span class="section-tag">01</span>
+    </div>
+    <div class="interest-tags">
+      <span class="interest-tag">Robotics &amp; Autonomous Systems</span>
+      <span class="interest-tag">Embedded Systems</span>
+      <span class="interest-tag">Control Systems</span>
+      <span class="interest-tag">Sensors &amp; Instrumentation</span>
+      <span class="interest-tag">AI / Machine Learning</span>
+      <span class="interest-tag">Semiconductor Devices</span>
+      <span class="interest-tag">Autonomous Aircraft &amp; Flight Control</span>
+      <span class="interest-tag">Mechatronics</span>
+      <span class="interest-tag">Mechanical Design &amp; CAD</span>
+      <span class="interest-tag">Simulation &amp; Computational Engineering</span>
+      <span class="interest-tag">IoT &amp; Environmental Automation</span>
+      <span class="interest-tag">Manual &amp; Mechanical Fabrication</span>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head">
+      <p class="section-title">Selected Projects</p>
+      <span class="section-tag">02</span>
+    </div>
+    <div class="projects">
+
+      <div class="project">
+        <div class="sheet">FLIGHT SYSTEMS</div>
+        <div class="project-head">
+          <h3>Reusable Flight Vehicle — Guidance &amp; Control</h3>
+          <span class="status">ONGOING</span>
+        </div>
+        <ul>
+          <li>Designing an actively controlled reusable flight vehicle end-to-end — airframe, thrust-vectoring mechanism, avionics, and control logic — modeled first in Onshape CAD</li>
+          <li>Architecting an Arduino Uno-based flight computer for rapid analog/digital sensor iteration, with accelerometer, gyroscope, and SD-card data logging planned for post-flight analysis</li>
+          <li>Sequencing the build deliberately: PC-based simulation and software validation before physical flight tests, with autonomous guidance, navigation, and waypoint-following as the target end state</li>
+        </ul>
+        <a class="repo-link" href="https://github.com/harisyousuf334/Independent-Reusable-Flight-Vehicle-Guidance-Control-Project-" target="_blank" rel="noopener">View repository</a>
+      </div>
+
+      <div class="project">
+        <div class="sheet">FLIGHT SYSTEMS</div>
+        <div class="project-head">
+          <h3>Autonomous Terrain-Following Flight System</h3>
+          <span class="status">ONGOING</span>
+        </div>
+        <ul>
+          <li>Designed a dual-sensor architecture for an aircraft to autonomously hold a set clearance over changing terrain — a downward sensor for ground height, a forward sensor for anticipating terrain ahead</li>
+          <li>Built and flight-tested a proof-of-concept on an Arduino Nano, closing the loop between an ultrasonic sensor and real-time altitude correction</li>
+          <li>Identified the programming and sensor-fusion depth the full control-surface implementation required — the direct motivation for the structured software foundation now being built through CS50x</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="sheet">FABRICATION</div>
+        <div class="project-head">
+          <h3>Ultralight Powered Glider</h3>
+        </div>
+        <ul>
+          <li>Designed and hand-fabricated an ultralight glider from wooden/bamboo stock and repurposed film, powered by an 810 coreless motor and 3.7V LiPo cell</li>
+          <li>Engineered a passive climb → auto-cutoff → glide profile, using the battery's own protection cutoff as a zero-component motor-termination mechanism</li>
+          <li>Ran repeated flight trials to iteratively tune climb rate and maximize total airtime — an early, purely mechanical exercise in the same feedback-driven design now applied to instrumented systems</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="sheet">EMBEDDED</div>
+        <div class="project-head">
+          <h3>Arduino-Based Electronic Synthesizer</h3>
+        </div>
+        <ul>
+          <li>Built a playable electronic instrument from scratch, with physical controls for pitch, volume, waveform, and modulation, plus integrated IEM audio output</li>
+          <li>Diagnosed the limits of timer-based tone generation on the platform and resolved them by integrating a dedicated audio-generation library</li>
+          <li>Owned the architecture and hardware/software integration throughout, using AI-assisted code for complex library implementation</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="sheet">AUTOMATION</div>
+        <div class="project-head">
+          <h3>Automated Plant Irrigation System</h3>
+        </div>
+        <ul>
+          <li>Built an Arduino-controlled watering system with per-plant moisture thresholds, keeping different plants at different target moisture levels from one controller</li>
+          <li>Routed solenoid valves off the home's existing water line instead of a powered pump, cutting both cost and points of failure</li>
+          <li>Designed to reduce overwatering and root-rot risk; humidity sensing and a humidifier planned as a future extension</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Haris Yousuf</span>
+    <span>Built with care, in winter</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
